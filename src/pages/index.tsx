@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-bl from-[#1f1e1e] to-[#0b0b0c]">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-bl from-[#1f1e1e] to-[#0b0b0c] text-center">
       <div>
         <p className="text-8xl text-sky-100">Kyle Johnson</p>
 
