@@ -61,11 +61,10 @@ const Home: NextPage = () => {
                 enable: true,
                 mode: "grab",
               },
-              // resize: true,
             },
             modes: {
               grab: {
-                distance: 200,
+                distance: 160,
               },
             },
           },
@@ -92,13 +91,13 @@ const Home: NextPage = () => {
                 default: "bounce",
               },
               random: false,
-              speed: 2,
+              speed: 1.8,
               straight: true,
             },
             number: {
               density: {
                 enable: true,
-                area: 800,
+                area: 1000,
               },
               value: 80,
             },
