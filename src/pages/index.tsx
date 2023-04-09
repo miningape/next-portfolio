@@ -1,11 +1,9 @@
 import { type NextPage } from "next";
-import React, { useCallback } from "react";
-import { Particles } from "react-particles";
-import { loadFull } from "tsparticles";
-import { type Engine } from "tsparticles-engine";
+import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import { type IconType } from "react-icons";
+import { Particles } from "~/components/particles";
 
 const LinkWithIcon: React.FC<{
   Icon: IconType;
@@ -22,11 +20,6 @@ const LinkWithIcon: React.FC<{
 );
 
 const Home: NextPage = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    await loadFull(engine);
-  }, []);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-bl from-[#1f1e1e] to-[#0b0b0c] text-center">
       <div>
@@ -47,70 +40,8 @@ const Home: NextPage = () => {
         </div>
       </div>
 
-      <Particles
-        className="absolute"
-        init={particlesInit}
-        options={{
-          background: {
-            opacity: 0,
-          },
-          fpsLimit: 120,
-          interactivity: {
-            events: {
-              onHover: {
-                enable: true,
-                mode: "grab",
-              },
-            },
-            modes: {
-              grab: {
-                distance: 160,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: "#ffffff",
-            },
-            opacity: {
-              value: 0.1,
-            },
-            links: {
-              color: "#ffffff",
-              distance: 150,
-              enable: true,
-              opacity: 0.1,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1.8,
-              straight: true,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 1000,
-              },
-              value: 80,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 5 },
-            },
-          },
-          detectRetina: true,
-        }}
-      ></Particles>
+      {/* <div className="absolute top-0 right-0 m-5 text-white"></div> */}
+      <Particles className="absolute" />
     </main>
   );
 };

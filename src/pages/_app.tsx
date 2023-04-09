@@ -12,7 +12,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           name="description"
           content="Kyle Johnson's Portfolio - hermetic.dev"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon-32x32.png" />
       </Head>
       <Component {...pageProps} />
     </>
