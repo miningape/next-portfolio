@@ -1,19 +1,19 @@
-import { useCallback } from "react";
-import { Particles as ParticlesComponent } from "react-particles";
+import { onMount, ParentProps } from "solid-js";
+import { tsParticles } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
-import { type Engine } from "tsparticles-engine";
 
-export const Particles: React.FC<{ className: string }> = ({ className }) => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    await loadFull(engine);
-  }, []);
-
-  return (
-    <ParticlesComponent
-      className={className}
-      init={particlesInit}
-      options={{
+// See: https://github.com/tsparticles/solid/#readme
+// https://github.com/tsparticles/solid/blob/main/apps/solid/src/App.tsx
+// https://particles.js.org/
+export default function ClientParticles(
+  props: ParentProps<{ className?: string }>
+) {
+  onMount(async () => {
+    tsParticles.init();
+    await loadFull(tsParticles);
+    await tsParticles.load({
+      id: "tsparticles",
+      options: {
         background: {
           opacity: 0,
         },
@@ -63,7 +63,7 @@ export const Particles: React.FC<{ className: string }> = ({ className }) => {
           number: {
             density: {
               enable: true,
-              area: 1000,
+              // area: 1000,
             },
             value: 80,
           },
@@ -75,7 +75,15 @@ export const Particles: React.FC<{ className: string }> = ({ className }) => {
           },
         },
         detectRetina: true,
-      }}
-    />
+      },
+    });
+
+    return true;
+  });
+
+  return (
+    <div id="tsparticles" class={props.className}>
+      <canvas class={props.className}></canvas>
+    </div>
   );
-};
+}
